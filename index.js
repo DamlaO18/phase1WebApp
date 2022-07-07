@@ -78,4 +78,19 @@ const app = () => {
 
 };
 
-app()};
+const quote = "https://type.fit/api/quotes"
+
+fetch(quote)
+.then(response => response.json())
+.then(json => {
+    let index = parseInt(Math.random() * 1643)
+        let newQuote = document.createElement('p');
+        newQuote.innerHTML = json[index].text;
+        document.querySelector('.quote').appendChild(newQuote);
+})
+
+
+app();
+
+}
+
