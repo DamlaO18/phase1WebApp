@@ -90,6 +90,12 @@ fetch(quote)
 })
 
 
+const newQuoteBtn = document.querySelector('.btn');
+
+newQuoteBtn.addEventListener('click', function() {
+    location.reload()
+});
+
 app();
 
 }
