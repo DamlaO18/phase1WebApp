@@ -189,7 +189,7 @@ header {
     min-width: 300px;
     font-size: 16px;
     padding: 8px 4px;
-    background-color: #6236ff;
+    background-color: #ff4244;
     color: #fff;
 }
 
@@ -219,7 +219,7 @@ header {
     width: 50px;
     height: 50px;
     position: absolute;
-    background-color: #6236ff;
+    background-color: #ff4244;
     border-radius: 50%;
     transition: 4s ease all;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) 0 4px 6px -2px rgba(0, 0, 0, 0.5);
@@ -243,7 +243,7 @@ header {
 .start {
     padding: 8px 20px;
     border-radius: 8px;
-    background-color: #6236ff;
+    background-color: #ff4244;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -253,7 +253,7 @@ header {
 
 .start:hover {
     background-color: #f1f1f1;
-    color: #6236ff;
+    color: #ff4244;
 }
 
 .start-inactive {
