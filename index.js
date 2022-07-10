@@ -1,5 +1,127 @@
 window.onload = function() {
 
+//Landing Page
+
+window.addEventListener("scroll", function(){
+    var header = document.querySelector(".links");
+    header.classList.toggle("sticky", window.scrollY > 0);
+})
+
+// let resetBtn = document.querySelector("#Reset");
+// let relaxBtn = document.querySelector("#Relax");
+// let rechargeBtn = document.querySelector("#Recharge");
+
+
+// resetBtn.addEventListener('mouseover', function() {
+//     innerText = "Create an affirmation.";
+// });
+
+// relaxBtn.addEventListener('mouseover', () => {
+//     innerText = "Focus on your breath";
+// });
+
+// rechargeBtn.addEventListener('mouseover', () => {
+//     relaxBtn.innerText = "Take some time to meditate";
+// });
+
+
+let heartBtn = document.querySelector("#heart"); 
+let heartCmnt = document.querySelector('.loved');
+
+heartBtn.addEventListener('click', function() {
+    heartCmnt.innerText = "You loved this quote";
+});
+
+const quote = "https://type.fit/api/quotes"
+
+fetch(quote)
+.then(response => response.json())
+.then(json => {
+    let index = parseInt(Math.random() * 1643)
+        let newQuote = document.createElement('p');
+        newQuote.innerHTML = json[index].text;
+        document.querySelector('.quote').appendChild(newQuote);
+})
+
+const newQuoteBtn = document.querySelector('.btn');
+
+newQuoteBtn.addEventListener('click', function() {
+    location.reload()
+});
+
+
+//Breathing App
+const circleProgress = document.querySelector('.circle-progress');
+const numberOfBreaths = document.querySelector('.breath-input');
+const start = document.querySelector('.start');
+const instructions = document.querySelector('.instructions');
+const breathsText = document.querySelector('.breaths-text');
+
+let breathsLeft = 3;
+
+    //selecting breaths
+    numberOfBreaths.addEventListener('change', () => {
+        breathsLeft = numberOfBreaths.value;
+        breathsText.innerText = breathsLeft;
+    });
+
+    //circle progress
+    const growCircle = () => {
+        circleProgress.classList.add("circle-grow");
+        setTimeout(() => {
+            circleProgress.classList.remove("circle-grow");
+        }, 8000);
+    };
+
+
+    //instructions
+    const breathTextUpdate = () => {
+        breathsLeft--;
+        breathsText.innerText = breathsLeft;
+        instructions.innerText = "Inhale to fill the circle";
+        setTimeout(() => {
+            instructions.innerText = "Hold breath...";
+            setTimeout(() => {
+                instructions.innerText = "Exhale slowly";
+            }, 4000);
+        }, 4000);
+    };
+
+    //breath loop
+    const breathingApp = () => {
+        const breathingAnimation = setInterval(() => {
+            if (breathsLeft === 0) {
+                clearInterval(breathingAnimation);
+                instructions.innerText = "Relaxation complete. Click 'begin' to start again.";
+                start.classList.remove('start-inactive');
+                breathsLeft = numberOfBreaths.value;
+                breathsText.innerText = breathsLeft;
+                return;
+            }
+            growCircle();
+            breathTextUpdate();
+        }, 12000);
+    };
+
+    //start breathing
+    start.addEventListener('click', () => {
+            start.classList.add("start-inactive");
+            instructions.innerText = "Get comfortable";
+            setTimeout(() => {
+                instructions.innerText = "Let's begin";
+                setTimeout(() => {
+                    breathingApp();
+                    growCircle();
+                    breathTextUpdate();   
+                }, 2000);
+            }, 2000);
+
+    });
+
+
+
+//Mediation App
+
 const app = () => {
     const song = document.querySelector('.song');
     const play = document.querySelector('.play');
@@ -42,7 +164,7 @@ const app = () => {
         })
     });
 
-    //Create a function specific to stop and play the sounds
+    //stop and play sounds
     const checkPlaying = song =>{
         if(song.paused){
             song.play();
@@ -78,25 +200,12 @@ const app = () => {
 
 };
 
-const quote = "https://type.fit/api/quotes"
-
-fetch(quote)
-.then(response => response.json())
-.then(json => {
-    let index = parseInt(Math.random() * 1643)
-        let newQuote = document.createElement('p');
-        newQuote.innerHTML = json[index].text;
-        document.querySelector('.quote').appendChild(newQuote);
-})
-
-
-const newQuoteBtn = document.querySelector('.btn');
-
-newQuoteBtn.addEventListener('click', function() {
-    location.reload()
-});
-
 app();
+
+
+
+
+
 
 }
 

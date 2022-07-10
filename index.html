@@ -8,20 +8,20 @@
     <title>Reset</title>
 </head>
 <body>
-
-    <div class="big-wrapper">
+<!-- Landing Page -->
+    <div class="big-wrapper" id="Home">
         <header>
             <div class="container">
                 <div class="logo">
                     <img src="">
-                    <h3>Reset</h3>
                 </div>
 
                 <div class="links">
                     <ul>
-                        <li><a href="#Relax">Relax</a></li>
-                        <li><a href="#Reset">Reset</a></li>
-                        <li><a href="#Recharge">Recharge</a></li>
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#Reset" data-hover="Create your own affirmation">Reset</a></li>
+                        <li><a href="#Relax" data-hover="Focus on your breath">Relax</a></li>
+                        <li><a href="#Recharge" data-hover="Take some time to meditate">Recharge</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,8 +32,8 @@
 
                 <div class="left">
                     <div class="big-title">
-                        <h1>Fill in</h1>
-                        <h1>Fill in again</h1>
+                        <h1>Reset</h1>
+                        <h1>Your Mind</h1>
                         <div class="cta">
                             <a href="#" class="btn">New quote</a>
                         </div>
@@ -42,6 +42,8 @@
 
                 <div class="right">
                     <div class="quote"></div>
+                    <button id="heart"> ❤️ </button>
+                    <p class="loved"></p>
                 </div>
             </div>
         </div>
@@ -51,10 +53,49 @@
         </div>
         </div>
 
+<!-- Affirmations -->
+<div class="Reset" id="Reset">
+    <h2>Reset</h2>
+    <p class="inspire">Your mind is your most powerful tool. Use it to recharge your spirit.</p>
+    <textarea name="paragraph_text" cols="50" rows="10" placeholder="Create your own affirmation. Think of words you would say to a close friend. Use these words to recharge yourself today."></textarea>
+    <p class="affirmation-instructions">
+        *Repeat the affirmation.*<br>
+        1<br>
+        2<br>
+        3
 
-    <div id="Reset" class="app">
+    </p>
+</div>
+
+<!-- Breathing App -->
+<div id="Relax"></div>
+<div id="breathing-app">
+    <div class="input">
+        <label>Select Breaths</label>
+        <select class="breath-input">
+            <option value="3">3 Breaths</option>
+            <option value="5">5 Breaths</option>
+            <option value="7">7 Breaths</option>
+        </select>
+    </div>
+
+    <div class="circle-wrap">
+        <div class="circle-outline"></div>
+        <div class="circle-progress"></div>
+    </div>
+
+    <p class="breaths">Breaths remaining: <span class="breaths-text">3</span></p>
+
+    <p class="instructions">Are you ready to relax?</p>
+
+    <button class="start">Begin</button>
+
+</div>
 
 
+<!-- Meidation App -->
+<figure> 
+<div id="Recharge" class="app">
         <div class="vid-container">
             <video loop>
                 <source src="./Mountain.mp4" type="video/mp4"/>
@@ -89,10 +130,16 @@
 
         </div>
     </div>
+</figure>
+    
 
-    <h1></h1>
+
+
+
 
     
     <script type="text/javascript" src="index.js"></script>
 </body>
+
+
 </html>

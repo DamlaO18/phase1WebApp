@@ -17,6 +17,8 @@
     --lightTwo: #aaa;
 }
 
+/* Landing Page */
+
 .big-wrapper {
     padding: 1.7rem 0 2rem;
     width: 100%;
@@ -29,39 +31,66 @@
 }
 
 .container {
-    position: relative;
     max-width: 81rem;
     width: 100%;
     margin: 0 auto;
     padding: 0 3rem;
+    height: 50px;
     z-index: 10;
 }
 
-header .container {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
-h3 {
-    color: var(--darkTwo);
-    font-size: 1.55rem;
-    line-height: 1.2;
-    font-weight: 700;
+
+.links {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100;
+}
+
+.links.sticky {
+    padding: 5px 100px;
+    background: #fff;
 }
 
 .links ul {
+    position: relative;
     display: flex;
+    justify-content: center;
     list-style: none;
     align-items: center;
+    top: 5px;
 }
 
-.links a {
-    color: var(--lightTwo);
-    margin-left: 4.5rem;
-    display: inline-block;
-    transition: .3s;
+.links ul li {
+    position: relative;
+    list-style: none;
 }
+
+.links ul li a {
+    position: relative;
+    margin: 0 15px;
+    margin-left: 4.5rem;
+    text-decoration: none;
+    color: var(--lightTwo);
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+
 
 .links a:hover {
     color: var(--hoverColor);
@@ -112,23 +141,155 @@ h3 {
 }
 
 
+.quote {
+    font-family: 'Gulzar', serif;
+    font-size: 40px;
+    color: black;
+    text-align: center;
+    background-color: white;
+    border-style: double;
+    border-width: 10px;
+    border-color: var(--darkTwo);
+}
+
+#heart {
+    border: none;
+    float: right;
+}
+
+
+/* Breathing App */
+#breathing-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: url(./breathing-app-bg.avif);
+    background-size: cover;
+    font-family: 'Gulzar', serif;
+    height: 720px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.input label {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.input select {
+    border: none;
+    border-radius: 8px;
+    min-width: 300px;
+    font-size: 16px;
+    padding: 8px 4px;
+    background-color: #6236ff;
+    color: #fff;
+}
+
+.input select:focus {
+    outline: none;
+}
+
+.circle-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.circle-outline {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 15px solid #f1f1f1;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+}
+
+.circle-progress {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: #6236ff;
+    border-radius: 50%;
+    transition: 4s ease all;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+}
+
+.circle-grow {
+    transform: scale(5.3);
+}
+
+.breaths {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.start {
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: #6236ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.start:hover {
+    background-color: #f1f1f1;
+    color: #6236ff;
+}
+
+.start-inactive {
+    pointer-events: none;
+    background-color: #969696;
+}
+
+
+/* Meditation App */
+
+figure {
+    height: 800px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+}
+
+
 .app {
-    height: 70vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+    height:100%;
 }
 
 .time-select, 
 .sound-picker,
 .player-container {
     height: 80%;
+    width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
 
 }
 
@@ -148,23 +309,31 @@ h3 {
 
 }
 
-
 .time-display {
     position: absolute;
     bottom: 10%;
     color: white;
     font-size: 50px;
-
 }
 
-.vid-container video {
-    height: 100%;
-    position: fixed;
+video {
+    position: absolute;
     top: 0%;
     left: 0%;
     width: 100%;
     z-index: -10;
+    height: 800px;
 }
+
+/* .vid-container video {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: -10;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+} */
 
 .time-select button,
 .sound-picker button {
@@ -177,7 +346,6 @@ h3 {
     border-radius: 5px;
     font-size: 20px;
     transition: all 0.5s ease;
-
 }
 
 .time-select button:hover {
@@ -195,11 +363,11 @@ h3 {
 }
 
 .sound-picker button:nth-child(1) {
-    background: #4972a1;
+    background: #f4f186;
 }
 
 .sound-picker button:nth-child(2) {
-    background: #a14f49;
+    background: darkgray;
 }
 
 .sound-picker button img {
@@ -207,10 +375,42 @@ h3 {
 
 }
 
-.quote {
+.time-display,
+.moving-outline,
+.track-outline {
+    z-index: 10;
+    position: absolute;
+}
+
+
+
+/* Affirmations */
+.Reset {
+    display: grid;
+    column-count: 3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    width: 100%;
+    margin-top: 50px;
     font-family: 'Gulzar', serif;
-    font-size: 20px;
-    color: black;
+    background-color: var(--backgroundColor);
+}
+
+h2 {
+    font-size: 40px;
+}
+
+
+
+.inspire {
+    grid-column: 2/3;
+    font-size: 30px;
+}
+
+.affirmation-instructions {
+    float: right;
     text-align: center;
-    background-color: white;
+
 }
