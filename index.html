@@ -19,9 +19,9 @@
                 <div class="links">
                     <ul>
                         <li><a href="#Home">Home</a></li>
-                        <li><a href="#Reset" data-hover="Create your own affirmation">Reset</a></li>
-                        <li><a href="#Relax" data-hover="Focus on your breath">Relax</a></li>
-                        <li><a href="#Recharge" data-hover="Take some time to meditate">Recharge</a></li>
+                        <li><a href="#Reset" id="resetBtn">Reset</a></li>
+                        <li><a href="#Relax" id="relaxBtn">Relax</a></li>
+                        <li><a href="#Recharge" id="rechargeBtn">Recharge</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,9 +41,12 @@
                 </div>
 
                 <div class="right">
-                    <div class="quote"></div>
-                    <button id="heart"> ❤️ </button>
-                    <p class="loved"></p>
+                    <div class="quote"></div> 
+                    <div class="heart-btn">
+                        <input type="checkbox" />
+                        <button><span>Like</span></button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -54,17 +57,26 @@
         </div>
 
 <!-- Affirmations -->
+
 <div class="Reset" id="Reset">
     <h2>Reset</h2>
     <p class="inspire">Your mind is your most powerful tool. Use it to recharge your spirit.</p>
-    <textarea name="paragraph_text" cols="50" rows="10" placeholder="Create your own affirmation. Think of words you would say to a close friend. Use these words to recharge yourself today."></textarea>
-    <p class="affirmation-instructions">
-        *Repeat the affirmation.*<br>
-        1<br>
-        2<br>
-        3
+    <div id="create-affirmation">
+        <input type="text" id="input" name="paragraph_text" cols="50" rows="10" placeholder="Type your affirmation here">
+        <input type="button" id="display-btn" value="Display">
+    </div>
 
-    </p>
+    <div id="generate-affirmation">
+        <h3 class="output"></h3>
+        <p class="affirmation-instructions">
+            *Repeat the affirmation.*<br>
+            1<br>
+            2<br>
+            3
+        </p>  
+    </div>
+
+
 </div>
 
 <!-- Breathing App -->

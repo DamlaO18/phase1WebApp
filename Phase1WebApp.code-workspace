@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../Desktop/app files"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "phase1WebApp"
+	}
+}

@@ -7,47 +7,80 @@ window.addEventListener("scroll", function(){
     header.classList.toggle("sticky", window.scrollY > 0);
 })
 
-// let resetBtn = document.querySelector("#Reset");
-// let relaxBtn = document.querySelector("#Relax");
-// let rechargeBtn = document.querySelector("#Recharge");
+let resetBtn = document.querySelector("#resetBtn");
+let relaxBtn = document.querySelector("#relaxBtn");
+let rechargeBtn = document.querySelector("#rechargeBtn");
 
 
-// resetBtn.addEventListener('mouseover', function() {
-//     innerText = "Create an affirmation.";
-// });
+resetBtn.addEventListener('mouseover', function(event) {
+    event.target.innerText = "Create an affirmation";
+});
+resetBtn.addEventListener('mouseout', function(event){
+    event.target.innerText = "Reset";
+})
 
-// relaxBtn.addEventListener('mouseover', () => {
-//     innerText = "Focus on your breath";
-// });
-
-// rechargeBtn.addEventListener('mouseover', () => {
-//     relaxBtn.innerText = "Take some time to meditate";
-// });
-
-
-let heartBtn = document.querySelector("#heart"); 
-let heartCmnt = document.querySelector('.loved');
-
-heartBtn.addEventListener('click', function() {
-    heartCmnt.innerText = "You loved this quote";
+relaxBtn.addEventListener('mouseover', (event) => {
+    event.target.innerText = "Focus on your breath";
 });
 
-const quote = "https://type.fit/api/quotes"
+relaxBtn.addEventListener('mouseout', (event) => {
+    event.target.innerText = "Relax";
+});
 
-fetch(quote)
-.then(response => response.json())
-.then(json => {
-    let index = parseInt(Math.random() * 1643)
-        let newQuote = document.createElement('p');
-        newQuote.innerHTML = json[index].text;
-        document.querySelector('.quote').appendChild(newQuote);
-})
+rechargeBtn.addEventListener('mouseover', (event) => {
+    event.target.innerText = "Take some time to meditate";
+});
+
+rechargeBtn.addEventListener('mouseout', (event) => {
+    event.target.innerText = "Recharge";
+});
+
+
+
+let fetchQuoteFunction = () => {
+
+
+    const quote = "https://type.fit/api/quotes"
+
+    fetch(quote)
+    .then(response => response.json())
+    .then(json => {
+        let quoteContainer = document.querySelector('.quote');
+        let index = parseInt(Math.random() * 1643)
+            let newQuote = document.createElement('p');
+            newQuote.innerHTML = json[index].text;
+            quoteContainer.innerHTML = '';
+            quoteContainer.appendChild(newQuote);
+    })
+}
+
+fetchQuoteFunction();
 
 const newQuoteBtn = document.querySelector('.btn');
 
 newQuoteBtn.addEventListener('click', function() {
-    location.reload()
+    fetchQuoteFunction()
 });
+
+//Reset page
+
+    function displayAffirmation() {
+        const affirmationInput = document.querySelector('#input');
+        const displayBtn = document.querySelector("#display-btn");
+        const affirmationContainer = document.querySelector(".output");
+        affirmationContainer.innerHTML = affirmationInput.value;
+        displayBtn.addEventListener('click', displayAffirmation);
+
+    };
+
+    displayAffirmation();
+
+    
+
+
+
+
+
 
 
 //Breathing App
@@ -160,7 +193,8 @@ const app = () => {
     timeSelect.forEach(option =>{
         option.addEventListener('click', function(){
             fakeDuration = this.getAttribute('data-time');
-            timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`;
+            let initialTime = Math.floor(fakeDuration % 60)
+            timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${initialTime <= 9 ? "0" + initialTime : initialTime}`;
         })
     });
 
@@ -188,7 +222,15 @@ const app = () => {
         outline.style.strokeDashoffset = progress;
 
         //animate text
-        timeDisplay.textContent = `${minutes}:${seconds}`;
+
+        if(seconds <= 9) {
+            timeDisplay.textContent = `${minutes}:0${seconds}`;
+        } else {
+            timeDisplay.textContent = `${minutes}:${seconds}`
+        }
+
+
+     
 
         if(currentTime >= fakeDuration){
             song.pause();
